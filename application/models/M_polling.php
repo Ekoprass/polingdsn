@@ -39,8 +39,8 @@ class M_polling extends CI_Model{
         return $q;
     }
 	function dosen_kelas($id){
-         $q=$this->db->query(" select distinct dosen.id_dosen,dosen.nama_dosen from dosen,detail_jadwal,jadwal
-                            where dosen.id_dosen=detail_jadwal.id_dosen and detail_jadwal.id_jadwal=jadwal.id_jadwal 
+         $q=$this->db->query(" select distinct dosen.id_dosen,dosen.nama_dosen,mata_kuliah.nama_mk from dosen,detail_jadwal,jadwal,mata_kuliah
+                            where dosen.id_dosen=detail_jadwal.id_dosen and detail_jadwal.id_jadwal=jadwal.id_jadwal and detail_jadwal.id_mk=mata_kuliah.id_mk
                             and jadwal.id_kelas='$id'");
         return $q;
     }
