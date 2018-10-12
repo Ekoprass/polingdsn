@@ -124,4 +124,10 @@ class M_laporan extends CI_Model{
         return $q;
 
     }
+
+    function dosen_mahasiswa($nim, $id_kelas)
+    {
+        $q=$this->db->query("select * from dosen_mhs where nim=$nim and id_kelas='".$id_kelas."' group by id_dosen");
+        return $q;
+    }
 }

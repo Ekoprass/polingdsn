@@ -56,7 +56,7 @@ class M_mahasiswa extends CI_Model{
     }
 	function cekn($nim){
         $this->db->where($this->primary,$nim);
-        $query=$this->db->get($this->table);        
+        $query=$this->db->get($this->table);         
         return $query;
     }
 	function update($info, $id){

@@ -37,22 +37,22 @@ class Home extends CI_Controller {
             if($cek_mahasiswa->num_rows()>0){
                 $this->session->set_userdata('username', $username);
 				$session_id = $this->session->userdata('username');
-				$data_mahasiswa=$this->m_login->data_mahasiswa($session_id)->row_array();
+				$data_mahasiswa=$this->m_login->data_mahasiswa($session_id)->row_array(); 
 				$level=$data_mahasiswa['nama_akses'];
 				$this->session->set_userdata('level',$level);
 				$this->session->set_flashdata('m_sukses','Sukses Login!');
 				date_default_timezone_set('Asia/Jakarta');
 				$date = date ("Ymd");
 				$cek_validasi=$this->m_mahasiswa->cek_vali($date, $username);
-				if($cek_validasi->num_rows()>0){
-					redirect('dashboard');	
-					}
-					else{
-					$id_date=$date.$username;
-					$this->m_mahasiswa->sim_validasi($id_date,$date,$username);
-					redirect('validasi/validasi/'.$level.'/'.$username);						
-					}
-                
+				// if($cek_validasi->num_rows()>0){
+				// 		$id_date=$date.$username;
+				// 		$this->m_mahasiswa->sim_validasi($id_date,$date,$username);
+				// 		redirect('validasi/validasi/'.$level.'/'.$username);	
+				// 	}
+				// 	else{
+						redirect('dashboard');				
+					// }
+					                
             }elseif($cek_dosen->num_rows()>0){
 				$cekakses=$this->m_login->ambilakses_dos($username)->num_rows();
 				if($cekakses>1){
