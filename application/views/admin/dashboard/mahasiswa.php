@@ -8,13 +8,13 @@
 <!-- BODY -->
    <div class="panel-body">         
 		<div class="padding-top">
-            		<?php foreach($polling as $row):?>
+			<?php foreach($polling as $row):?>
 			<div class="row">	    
 				<div class="col-sm-3">
 	                <div class="panel fresh-color panel-danger">
 		             	<div class="panel-heading"><i class="icon fa fa-th-large fa-2x"> Detail Mahasiswa</i></div>
 	                   	<div class="panel-body">
-	                   		<echo> Program Studi : 
+	                   		<echo > <center> Program Studi : </center>
 	                   	</echo>
 		                    	<div class="sub-title" align="center"><H3><b><?php $id=$row->id_kelas;
 		                       $kelas_siswa=$this->m_polling->kelas_siswa($id)->row_array(); 
@@ -28,16 +28,17 @@
 	                        <div class="panel-body">
 	                        	<echo> Kelas : 
 	                   	</echo>
-								<div class="sub-title" align="center"><H3><b><?php echo $row->id_kelas?></b></H3></div>			                       
-	                    </div>
+								<div class="sub-title" align="center"><H3><b><?php echo $row->id_kelas?></b></H3></div>
                 		</div>
-	                		</div>
+                		</div>
+                		</div>
                 		</div>
 	            	</div>		            
          		</div>
-         		<div class="col-sm-3">
-				<div class="col-sm-3">
-	            </div>        
+         		<!-- <div class="col-sm-3">
+				<div class="col-sm-3"> -->
+	            <!-- </div> -->   
+	            <!-- dosen -->  
 	            <div class="col-sm-3">
 	                <div class="panel fresh-color panel-info">
 	                    <div class="panel-heading">
@@ -54,9 +55,9 @@
 	                </div>
 	            </div> 
          	</div>
-        </div>		
+        </div>	
 
-			<div id="<?php echo $id=$row->id_kelas;?>" class="modal fade" role="dialog">
+<div id="<?php echo $id=$row->id_kelas;?>" class="modal fade" role="dialog">
 			  <div class="modal-dialog">
 
 			    <!-- Modal content-->
@@ -81,20 +82,14 @@
 							<td><?php echo $dsn->nama_dosen ?></td>
 							<td><?php echo $dsn->nama_mk ?></td>
 						</tr>
-						<?php } ?>
+						<?php }?> 
 					</table>
 
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			      </div>
-			    </div>
-
-			  </div>
-			</div>
-
-
         <?php endforeach; ?>
-    						
+        </div>						
 	</div>
 </div>

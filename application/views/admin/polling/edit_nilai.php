@@ -23,6 +23,7 @@
 							<th width=125>Nama Dosen</th>
 							<td><?php echo $dosen['nama_dosen'];?></td>
 						</tr>
+						
 				</table>
 		</div>
 		<div class="col-md-2">
