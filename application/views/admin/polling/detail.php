@@ -49,7 +49,7 @@
 							<tr>
 								<th width=150 >No.</th>
 								<th width=500 >Nama Dosen</th>
-								<th width=150 >Mata Kuliah Yang Diampu</th>
+								<th width=500 >Mata Kuliah</th>
 								<th width=150 >Nilai</th>
 								<th colspan=2 ><center>Mulai Penilaian</center></th>
 							</tr>
