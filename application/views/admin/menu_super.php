@@ -5,7 +5,7 @@
 							<div class="navbar-header">
 								<a class="navbar-brand" href="<?php echo base_url('');?>">
 									<div class="icon fa fa-paper-plane"></div>
-									<div class="title">Polling AKN Bojonegoro</div>
+									<div class="title">Penilaian AKN Bojonegoro</div>
 								</a>
 								<button type="button" class="navbar-expand-toggle pull-right visible-xs">
 									<i class="fa fa-times icon"></i>
@@ -108,13 +108,9 @@
 												<li>
 													<a href="<?php echo base_url('index.php/polling/laporan');?>">
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<span class="glyphicon glyphicon-list"></span>Laporan Polling</a>
+													<span class="glyphicon glyphicon-list"></span>Laporan Penilaian Dosen</a>
 												</li>
-												<li>
-													<a href="<?php echo base_url('index.php/Laporan/detail_report');?>">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<span class="glyphicon glyphicon-list"></span>Detail Laporan Polling</a>
-												</li>
+											
 											</ul>
 										</div>
 									</div>

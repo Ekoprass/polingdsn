@@ -2,7 +2,7 @@
 	<!--panel header-->
 	<div class="panel-heading">
 		<h4 class="panel-title">
-			<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Polling</strong>&nbsp
+			<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Penialaian Dosen</strong>&nbsp
 			<span class="fa fa-angle-double-right"/></span> <strong> Detail</strong>
 		</h4>
     </div>
@@ -48,14 +48,16 @@
 					<table class="table table-hover table-responsive table-bordered">
 							<tr>
 								<th width=150 >No.</th>
-								<th width=700 >Nama Dosen</th>
+								<th width=500 >Nama Dosen</th>
+								<th width=150 >Mata Kuliah Yang Diampu</th>
 								<th width=150 >Nilai</th>
-								<th colspan=2 ><center>Mulai Polling</center></th>
+								<th colspan=2 ><center>Mulai Penilaian</center></th>
 							</tr>
 						<?php $no=0;  foreach($dosen_kelas as $row ): $no++;?>
 							<tr>
 								<td><?php echo ($no);?></td>
 								<td><?php echo $row->nama_dosen;?></td>
+								<td><?php echo $row->nama_mk;?></td>
 								<td><?php
 								$nim=$this->session->userdata('username');
 								$ceknilai=$this->m_polling->ceknilai($row->id_dosen,$kelas_siswa['id_kelas'],$nim)->result();

@@ -14,8 +14,8 @@ class Polling extends CI_Controller{
     }
     function index(){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Penilaian";
 		$username=$this->session->userdata('username');
 		$data['content']="polling/index.php";
 		$data['polling']=$this->m_polling->ambil_data($username)->result();
@@ -23,8 +23,8 @@ class Polling extends CI_Controller{
     }
 	function tambah(){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="MASTER DATA > Polling > Tambah";		
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="MASTER DATA > Penilaian > Tambah";		
 		$data['content']="polling/tambah.php";
 		$data['polling']=$this->m_polling->ambil_data()->result();
 		$this->load->view('admin/template',$data);
@@ -56,7 +56,7 @@ class Polling extends CI_Controller{
 		$nim=$this->input->post('nim');
 		
 			$this->m_polling->simpan_polling($dosen,$kelas,$nim);
-			$this->session->set_flashdata('m_sukses','Polling Berhasil Dilakukan');
+			$this->session->set_flashdata('m_sukses','Penilaian Berhasil Dilakukan');
 			redirect('polling/detail/'.$kelas);
 	}
 	function edit_polling(){
@@ -64,13 +64,13 @@ class Polling extends CI_Controller{
 		$kelas=$this->input->post('kelas');
 		$nim=$this->input->post('nim');
 		$this->m_polling->edit_polling($dosen,$kelas,$nim);
-		$this->session->set_flashdata('m_sukses','Polling Berhasil Dilakukan');
+		$this->session->set_flashdata('m_sukses','Penilaian Berhasil Dilakukan');
 		redirect('polling/detail/'.$kelas);
 	}
 	function detail($id){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/detail.php";
 		$data['kelas_siswa']=$this->m_polling->kelas_siswa($id)->row_array();
 		$data['dosen_kelas']=$this->m_polling->dosen_kelas($id)->result();
@@ -78,8 +78,8 @@ class Polling extends CI_Controller{
     }
     function laporan(){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Laporan Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Laporan Penilaian";
 		$data['content']="polling/laporan.php";
 		$data['dosen_kelas']=$this->m_polling->dosen_polling()->result();
 		$data['dosen']=$this->m_polling->daftar_dosen()->result();
@@ -95,8 +95,8 @@ class Polling extends CI_Controller{
     }
     function laporan_dosen(){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Laporan Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Laporan Penilaian";
 		$data['content']="polling/laporan_dosen.php";
 		$id=$this->session->userdata('username');
 		$data['dosen']=$this->m_polling->dosenuser($id)->row_array();
@@ -107,8 +107,8 @@ class Polling extends CI_Controller{
     }
 	function detail_nilai($id){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/detail_nilai.php";
 		$data['dosen']=$this->m_polling->dosen($id)->row_array();
 		$data['nilai']=$this->m_polling->nilai()->result();
@@ -119,8 +119,8 @@ class Polling extends CI_Controller{
     }
     function detail_dosen(){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/detail_dosen.php";
 		$id=$this->uri->segment(3);
 		$data['dosen']=$this->db->query("select * from dosen where id_dosen='$id'")->row_array();
@@ -132,8 +132,8 @@ class Polling extends CI_Controller{
     }
     function detail_admin(){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/detail_admin.php";
 		$id=$this->uri->segment(3);
 		$data['dosen']=$this->db->query("select * from dosen where id_dosen='$id'")->row_array();
@@ -159,8 +159,8 @@ class Polling extends CI_Controller{
     }
     function detail_hasil_dosen(){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/detail_admin.php";
 		$id=$this->uri->segment(3);
 		$data['dosen']=$this->db->query("select * from dosen where id_dosen='$id'")->row_array();
@@ -172,8 +172,8 @@ class Polling extends CI_Controller{
     }
     function edit_nilai($id){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Polling";
+		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
+		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/edit_nilai.php";
 		$data['dosen']=$this->m_polling->dosen($id)->row_array();
 		$data['nilai']=$this->m_polling->nilai()->result();
@@ -184,7 +184,7 @@ class Polling extends CI_Controller{
     }
 	function edit($id_polling){
 		include('menu_akses.php'); //hak akses
-		$data['title']	="Edit Polling"; 		//judul
+		$data['title']	="Edit Penilaian"; 		//judul
 		$data['judul']="MASTER DATA > P > Edit";	
         $data['content']="polling/edit.php"; 	//konten
         $data['polling']=$this->m_polling->ceki($id_polling)->row_array(); //ambil data
@@ -203,8 +203,8 @@ class Polling extends CI_Controller{
 	}
 	function hapus($id_polling){
 		include('menu_akses.php'); //hak akses
-		$data['title']="Hapus Polling";
-		$data['judul']="MASTER DATA > Polling > Hapus";		
+		$data['title']="Hapus Penilaian";
+		$data['judul']="MASTER DATA > Penilaian > Hapus";		
 		$data['content']="polling/hapus.php";
 		$data['polling']=$this->m_polling->ceki($id_polling)->row_array();
 		$this->load->view('admin/template',$data);
@@ -239,7 +239,7 @@ class Polling extends CI_Controller{
 	}
 	function nonaktif(){
 		include('menu_akses.php'); //hak akses
-		$data['title']="polling | Polling AKN Bojonegoro";
+		$data['title']="polling | Penilaian AKN Bojonegoro";
 		$data['judul']="MASTER DATA > polling";
 		$data['content']="polling/nonaktif.php";
 		$data['polling']=$this->m_polling->ambil_datanon()->result();
@@ -247,7 +247,7 @@ class Polling extends CI_Controller{
     }
 	function cari(){
 		include('menu_akses.php'); //hak akses
-		$data['title']=" Polling Cari | Polling AKN Bojonegoro";
+		$data['title']=" Penilaian Cari | Penilaian AKN Bojonegoro";
 		$data['judul']="TRANSAKSI > polling Cari";
 		$data['content']="polling/cari.php";
 		$thn_semester=$this->input->post('thn_semester');
@@ -291,7 +291,7 @@ class Polling extends CI_Controller{
     }
     function caridos(){
 		include('menu_akses.php'); //hak akses
-		$data['title']=" Polling Cari | Polling AKN Bojonegoro";
+		$data['title']=" Penilaian Cari | Penilaian AKN Bojonegoro";
 		$data['judul']="TRANSAKSI > polling Cari";
 		$data['content']="polling/caridos.php";
 		$thn_semester=$this->input->post('thn_semester');
@@ -335,7 +335,7 @@ class Polling extends CI_Controller{
     }
 	function carinon(){
 		include('menu_akses.php'); //hak akses
-		$data['title']=" polling Cari | Polling AKN Bojonegoro";
+		$data['title']=" polling Cari | Penilaian AKN Bojonegoro";
 		$data['judul']="MASTER DATA > polling Cari";
 		$data['content']="polling/carinon.php";
 		$cari=$this->input->post('cari');

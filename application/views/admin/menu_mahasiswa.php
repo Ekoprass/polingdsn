@@ -20,7 +20,7 @@
 								</li>
 								<li class="panel panel-default dropdown">
 									<a data-toggle="collapse" href="#dropdown-form">
-										&nbsp; <span class="glyphicon glyphicon-retweet"></span><span class="title">Polling</span>
+										&nbsp; <span class="glyphicon glyphicon-retweet"></span><span class="title">Penilaian</span>
 									</a>
 									<!-- Dropdown level 1 -->
 									<div id="dropdown-form" class="panel-collapse collapse">
@@ -29,7 +29,7 @@
 												<li>
 													<a href="<?php echo base_url('index.php/polling');?>">
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<span class="glyphicon glyphicon-usd"></span>  Polling Dosen</a>
+													<span class="glyphicon glyphicon-usd"></span>  Penilaian Dosen</a>
 												</li>
 											</ul>
 										</div>

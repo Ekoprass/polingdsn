@@ -2,7 +2,7 @@
 	<!--panel header-->
 	<div class="panel-heading">
 		<h4 class="panel-title">
-			<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Polling Aktif</strong></a>
+			<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Penilaian Aktif</strong></a>
 		</h4>
     </div>
 	
