@@ -12,26 +12,35 @@
 			<div class="row">	    
 				<div class="col-sm-3">
 	                <div class="panel fresh-color panel-danger">
-		             	<div class="panel-heading"><i class="icon fa fa-th-large fa-2x"> Detail Mahasiswa</i></div>
+		             	<div class="panel-heading"><i class="icon fa fa-th-large fa-2x"> Detail Kelas</i>
+		             	<a href="<?php echo site_url('polling/detail/'.$row->id_kelas.'') ?>" class="btn btn-danger  pull-right" style="margin: unset;"><i class="glyphicon glyphicon-zoom-in" ></i></a> </div>
 	                   	<div class="panel-body">
-	                   		<echo > <center> Program Studi : </center>
-	                   	</echo>
-		                    	<div class="sub-title" align="center"><H3><b><?php $id=$row->id_kelas;
+	                   		<echo > <center> Program Studi : </center></echo>
+		                    <div class="sub-title" align="center"><H3><b><?php $id=$row->id_kelas;
 		                       $kelas_siswa=$this->m_polling->kelas_siswa($id)->row_array(); 
 		                       echo $kelas_siswa['nama_prodi'];?></b></H3>
 		                       <div class="panel-body">
-		                       	<echo> Tahun Ajaran : 
-	                   	</echo>
-	                    	<div class="sub-title" align="center"><H3><b><?php $id=$row->id_kelas;
-	                       $kelas_siswa=$this->m_polling->kelas_siswa($id)->row_array(); 
-	                       echo $kelas_siswa['tahun'];?></b></H3></div>
-	                        <div class="panel-body">
-	                        	<echo> Kelas : 
-	                   	</echo>
-								<div class="sub-title" align="center"><H3><b><?php echo $row->id_kelas?></b></H3></div>
-                		</div>
-                		</div>
-                		</div>
+		                       		<echo> Tahun Ajaran : </echo>
+			                    	<div class="sub-title" align="center"><H3><b><?php $id=$row->id_kelas;
+			                      	$kelas_siswa=$this->m_polling->kelas_siswa($id)->row_array(); 
+			                       	echo $kelas_siswa['tahun'];?></b></H3></div>
+			                        	<echo> Kelas : </echo>
+										<div class="sub-title" align="center"><H3><b><?php echo " Semester ".substr($id=$row->id_kelas,5,1)." Kelas ".strtoupper(substr($id=$row->id_kelas,6,2))." - ".substr($id=$row->id_kelas,8,2)  ?></b></H3>
+										</div>
+										
+					                    <div class="panel-body">
+					                   	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#<?php echo $id=$row->id_kelas;?>" style="padding: 0; margin: auto; background: #fff; border-color: #fff; text-align: center; width: -webkit-fill-available;">
+					                   		<div class="sub-title" align="center"><i class="icon fa fa-user fa-2x"></i> <H4><b>Jumlah Dosen</b></H4></div>
+					                    	<div class="sub-title" align="center"><H3><b><?php $id=$row->id_kelas;
+											$nim=$this->session->userdata('username');
+											$jumlah_dosen=$this->m_polling->jumlah_dosen($id)->num_rows();
+											echo $jumlah_dosen;?></b></H3></div>
+										</button>
+					                    </div>
+
+
+                				</div>
+                			</div>
                 		</div>
 	            	</div>		            
          		</div>
@@ -39,25 +48,12 @@
 				<div class="col-sm-3"> -->
 	            <!-- </div> -->   
 	            <!-- dosen -->  
-	            <div class="col-sm-3">
-	                <div class="panel fresh-color panel-info">
-	                    <div class="panel-heading">
-	                    	<i class="icon fa fa-user fa-2x"> Jumlah Dosen</i> 
-	                    </div>
-	                    <div class="panel-body">
-	                   	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#<?php echo $id=$row->id_kelas;?>" style="padding: 0; margin: auto; background: #fff; border-color: #fff; text-align: center; width: -webkit-fill-available;">
-	                    	<div class="sub-title" align="center"><H3><b><?php $id=$row->id_kelas;
-							$nim=$this->session->userdata('username');
-							$jumlah_dosen=$this->m_polling->jumlah_dosen($id)->num_rows();
-							echo $jumlah_dosen;?></b></H3></div>
-						</button>
-	                    </div>
-	                </div>
-	            </div> 
-         	</div>
-        </div>	
+	        
+         	
 
-<div id="<?php echo $id=$row->id_kelas;?>" class="modal fade" role="dialog">
+
+
+			<div id="<?php echo $id=$row->id_kelas;?>" class="modal fade" role="dialog">
 			  <div class="modal-dialog">
 
 			    <!-- Modal content-->
@@ -89,7 +85,11 @@
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			      </div>
+			        </div>						
+				</div>
+			</div>
         <?php endforeach; ?>
-        </div>						
+
+		</div>
 	</div>
-</div>
+	</div>	

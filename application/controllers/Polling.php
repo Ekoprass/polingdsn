@@ -8,6 +8,7 @@ class Polling extends CI_Controller{
 		$this->load->model('m_login');
 		$this->load->model('m_polling');
 		$this->load->model('m_laporan');
+		$this->load->model('m_dosen');
 		if(!$this->session->userdata('username')){
             redirect('home');
 		}
@@ -135,6 +136,7 @@ class Polling extends CI_Controller{
 		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
 		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/detail_admin.php";
+		$kelas=$this->uri->segment(4);
 		$id=$this->uri->segment(3);
 		$data['dosen']=$this->db->query("select * from dosen where id_dosen='$id'")->row_array();
 		$data['tahun_semester']=$this->uri->segment(4);
@@ -144,15 +146,15 @@ class Polling extends CI_Controller{
 		$data['pertanyaan']=$this->m_polling->soal($id_tahun_semester)->result();
 		$data['dosen_mk']=$this->m_laporan->dosen_mk($id)->row_array();
 
-		$jumlah_mhs_penilai=$this->m_laporan->mhs_menilai($id)->row_array();
-		$jumlah_mhs=$this->m_laporan->jumlahmhs_dosen($id)->row_array();
+		$jumlah_mhs_penilai=$this->m_laporan->mhs_menilai_dosen_thn($id, $kelas)->row_array();
+		$jumlah_mhs=$this->m_dosen->jumlah_mhs_tahun($kelas, $id)->row_array(); 
 		$data['jumlah_mhs']=$jumlah_mhs;
 		$data['mhs_sudah_menilai']=$jumlah_mhs_penilai;
-		$data['mhs_belum_menilai']=$jumlah_mhs['jumlah_siswa']-$jumlah_mhs_penilai['jumlah_penilai'];
+		$data['mhs_belum_menilai']=$jumlah_mhs['jumlah']-$jumlah_mhs_penilai['jumlah_penilai'];
 
 		$data['kelas']=$this->m_laporan->getKelas($id)->result();
-		$data['tot_nilai']=$this->m_laporan->getNilai($id)->row_array();
-		$data['rank']=$this->m_laporan->rank($id)->row_array();
+		$data['tot_nilai']=$this->m_laporan->rankThn($id, $kelas)->row_array();
+		$data['rank']=$this->m_laporan->rankThn($id, $kelas)->row_array();
 
 
 		$this->load->view('admin/template',$data);
@@ -162,12 +164,26 @@ class Polling extends CI_Controller{
 		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
 		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/detail_admin.php";
+		$kelas=$this->uri->segment(4);
 		$id=$this->uri->segment(3);
 		$data['dosen']=$this->db->query("select * from dosen where id_dosen='$id'")->row_array();
 		$data['tahun_semester']=$this->uri->segment(4);
 		$data['nilai']=$this->m_polling->nilai()->result();
 		$id_tahun_semester=$this->uri->segment(4);
 		$data['pertanyaan']=$this->m_polling->soal($id_tahun_semester)->result();
+		$data['dosen_mk']=$this->m_laporan->dosen_mk($id)->row_array();
+
+		$jumlah_mhs_penilai=$this->m_laporan->mhs_menilai_dosen_thn($id, $kelas)->row_array();
+		$jumlah_mhs=$this->m_dosen->jumlah_mhs_tahun($kelas, $id)->row_array(); 
+		$data['jumlah_mhs']=$jumlah_mhs;
+		$data['mhs_sudah_menilai']=$jumlah_mhs_penilai;
+		$data['mhs_belum_menilai']=$jumlah_mhs['jumlah']-$jumlah_mhs_penilai['jumlah_penilai'];
+
+		$data['kelas']=$this->m_laporan->getKelas($id)->result();
+		$data['tot_nilai']=$this->m_laporan->rankThn($id, $kelas)->row_array();
+		$data['rank']=$this->m_laporan->rankThn($id, $kelas)->row_array();
+
+
 		$this->load->view('admin/template',$data);
     }
     function edit_nilai($id){

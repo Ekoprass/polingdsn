@@ -35,7 +35,7 @@
 		<script src="<?php echo base_url('assets/amcharts/pie.js')?>"></script>
 		<script src="<?php echo base_url('assets/amcharts/plugins/export/export.min.js')?>"></script>
 		<link rel="stylesheet" href="<?php echo base_url('assets/amcharts/plugins/export/export.css')?>" type="text/css" media="all" />
-		<script src="<?php echo base_url('assets/amcharts/themes/none.js')?>"></script>
+		<script src="<?php echo base_url('assets/amcharts/themes/light.js')?>"></script>
 
 
 

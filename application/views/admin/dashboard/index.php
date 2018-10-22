@@ -85,9 +85,9 @@ var chart = AmCharts.makeChart("serial",
     "type": "serial",
     "theme": "light",
     "titles": [{
-		"text": "Perolehan Nilai Dosen Terbaik", 
+		"text": "Perolehan Nilai Dosen Terbaik Tahun Ajaran <?php echo date('Y') ?>", 
 		"color": "#0a0", 
-		"size": 24, 
+		"size": 20, 
 		"url": "#" //custom url property to simplify the click event setup
   }],
     "dataProvider": [

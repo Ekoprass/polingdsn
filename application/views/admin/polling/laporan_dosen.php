@@ -119,7 +119,7 @@ $ceknilai=$this->m_polling->ceknilai_dosen($row->id_dosen)->result();
 				endforeach;
 				$jumlah=array_sum($nil);
 				$jumlah2=array_sum($nil2);
-				echo $nilaitot=$jumlah-$jumlah2;
+				
 				
  ?>
 	</div>

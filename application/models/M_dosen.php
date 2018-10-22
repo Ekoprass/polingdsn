@@ -106,4 +106,21 @@ class M_dosen extends CI_Model{
             }
         }
     }
+
+    function dosen_mk($id_dosen)
+    {
+         $q=$this->db->query("select * from dosen_mk where id_dosen ='$id_dosen'");
+         return $q;
+    }
+    function jumlah_mhs($id_kelas, $id_dosen)
+    {
+         $q=$this->db->query("select count(nim) as jumlah from jumlah_mhs where id_kelas='$id_kelas' and id_dosen='$id_dosen'");
+         return $q;
+    }
+     function jumlah_mhs_tahun($id_kelas, $id_dosen)
+    {
+         $q=$this->db->query("select count(nim) jumlah from jumlah_mhs where substring(id_kelas,1,6)='$id_kelas' and id_dosen='$id_dosen'");
+         return $q;
+    }
+    
 }

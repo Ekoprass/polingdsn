@@ -114,7 +114,7 @@ class M_laporan extends CI_Model{
 
     function toptri()
     {
-         $q=$this->db->query("select * from polingdsn limit 3");
+         $q=$this->db->query("select * from rank order by nilai desc limit 3");
          return $q;
     }
 
@@ -129,5 +129,30 @@ class M_laporan extends CI_Model{
     {
         $q=$this->db->query("select * from dosen_mhs where nim=$nim and id_kelas='".$id_kelas."' group by id_dosen");
         return $q;
+    }
+
+    function mhs_menilai_dosen_thn($dosen, $id_kelas)
+    {
+        $q=$this->db->query("select count(nim) as jumlah_penilai from mahasiswa where nim in 
+            (select p.nim from polling p where p.id_dosen='$dosen' and substring(id_kelas,1,6)='$id_kelas' group by p.nim)");
+        return $q;
+    }
+
+     function getNilaiThn($id_dosen, $tahun)
+    {
+        $q=$this->db->query("
+            select d.nama_dosen, 
+            sum(if(kn.id_kriteria_nilai=p.kriteria_nilai,kn.kriteria_nilai,0)) as nilai
+            from polling p, kriteria_nilai kn, dosen d
+            where p.id_dosen='".$id_dosen."' and substring(p.id_kelas,1,6)=$tahun
+            and p.id_dosen=d.id_dosen
+            and p.kriteria_nilai=kn.id_kriteria_nilai");
+        return $q;
+    }
+     function rankThn($id_dosen,$id_kelas)
+    {
+        $q=$this->db->query("select * from rank where id_dosen=$id_dosen and tahun=$id_kelas");
+        return $q;
+
     }
 }

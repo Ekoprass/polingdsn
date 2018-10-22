@@ -25,7 +25,8 @@ class Dashboard extends CI_Controller{
 			$data['content']="dashboard/mahasiswa.php";
 			$data['polling']=$this->m_polling->ambil_data($username)->result();
 		}elseif($level=='dosen'){
-			$data['content']="dashboard/index.php";
+			$data['content']="dashboard/dosen.php";
+			$data['dosen']=$this->m_dosen->dosen_mk($username)->result();
 		}elseif($level=='superadmin'){
 			$data['content']="dashboard/index.php";
 		}
