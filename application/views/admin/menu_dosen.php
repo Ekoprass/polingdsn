@@ -5,7 +5,7 @@
 							<div class="navbar-header">
 								<a class="navbar-brand" href="<?php echo base_url('');?>">
 									<div class="icon fa fa-paper-plane"></div>
-									<div class="title">Polling AKN Bojonegoro</div>
+									<div class="title">Penilaian AKN Bojonegoro</div>
 								</a>
 								<button type="button" class="navbar-expand-toggle pull-right visible-xs">
 									<i class="fa fa-times icon"></i>
@@ -20,7 +20,7 @@
 								</li>
 								<li class="panel panel-default dropdown">
 									<a data-toggle="collapse" href="#dropdown-form">
-										&nbsp; <span class="glyphicon glyphicon-retweet"></span><span class="title">Polling</span>
+										&nbsp; <span class="glyphicon glyphicon-retweet"></span><span class="title">Penilaian</span>
 									</a>
 									<!-- Dropdown level 1 -->
 									<div id="dropdown-form" class="panel-collapse collapse">
@@ -29,7 +29,7 @@
 												<li>
 													<a href="<?php echo base_url('index.php/polling/laporan_dosen');?>">
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<span class="glyphicon glyphicon-list"></span>Laporan Polling</a>
+													<span class="glyphicon glyphicon-list"></span>Laporan Penilaian</a>
 												</li>
 											</ul>
 										</div>

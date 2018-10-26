@@ -2,7 +2,7 @@
 	<!--panel header-->
 	<div class="panel-heading">
 		<h4 class="panel-title">
-			<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Polling</strong>&nbsp
+			<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Penilaian</strong>&nbsp
 			<span class="fa fa-angle-double-right"/></span> <strong> Detail</strong>&nbsp	
 			<span class="fa fa-angle-double-right"/></span> <strong> Detail Nilai</strong>
 		</h4>
@@ -38,7 +38,7 @@
 						</tr>
 						<tr>
 							<th width=140>Jumlah Mahasiswa</th>
-							<td><?php echo $jumlah_mhs['jumlah_siswa'];?></td>
+							<td><?php echo $jumlah_mhs['jumlah'];?></td>
 						</tr>
 						<tr>
 							<th width=140>Sudah Menilai</th>

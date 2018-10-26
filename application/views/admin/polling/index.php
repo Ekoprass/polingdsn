@@ -45,14 +45,14 @@
 					<th >No</th>
 					<th >Kelas Semester</th>
 					<th >Jumlah Dosen</th>
-					<th >Sudah</th>
-					<th >Belum</th>
+					<th >Sudah Melakukan Penilaian</th>
+					<th >Belum Melakukan Penilaian</th>
 					<th ><center>Aksi</center></th>
 				</tr>
 			 <?php $no=0; foreach($polling as $row): $no++;?>
 			<tr>
 				<td ><?php echo $no;?></td>
-				<td ><?php echo $row->id_kelas;?></td>
+				<td width="200" ><?php echo " Semester ".substr($id=$row->id_kelas,5,1)." Kelas ".strtoupper(substr($id=$row->id_kelas,6,2))." - ".substr($id=$row->id_kelas,8,2) ;?></td>
 				<td ><?php $id=$row->id_kelas;
 				$nim=$this->session->userdata('username');
 				$jumlah_dosen=$this->m_polling->jumlah_dosen($id)->num_rows();
