@@ -2,7 +2,7 @@
 	<!--panel header-->
 	<div class="panel-heading">
 		<h4 class="panel-title">
-			<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Laporan Polling</strong></a>
+			<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Laporan Penilaian</strong></a>
 		</h4>
     </div>
     <div class="panel-body">	
@@ -58,7 +58,7 @@
 					<?php $no=0; foreach ($tahun_semester as $row): $no++ ;?>
 				<tr>
 					<td ><?php echo $no?></td>
-					<td ><?php echo $row->id_tahun_semester;?></td>
+					<td ><?php echo "Tahun Ajaran ".substr($row->id_tahun_semester,0,4)." Semester ".substr($row->id_tahun_semester,4,2);?></td>
 					<td ><?php 
 				$ceknilai=$this->m_polling->ceknilai_dosen($row->id_dosen)->result();
 				$nil=array();

@@ -2,7 +2,7 @@
 	<!--panel header-->
 	<div class="panel-heading">
 		<h4 class="panel-title">
-		<center><span class="icon fa fa-institution fa-2x">Sistem Informasi Penilaian Kinerja Dosen (Polling)</span></center>
+		<center><span class="icon fa fa-institution fa-2x">Sistem Informasi Penilaian Kinerja Dosen</span></center>
 		</h4>
     </div>
 	
@@ -57,7 +57,7 @@ var chart = AmCharts.makeChart( "pie", {
   "type": "pie",
   "theme": "light",
   "titles": [{
-		"text": "Mahasiswa Yang Melakukan Poling", 
+		"text": "Mahasiswa Yang Melakukan Penilaian", 
 		"color": "#0a0", 
 		"size": 24, 
 		"url": "#" //custom url property to simplify the click event setup

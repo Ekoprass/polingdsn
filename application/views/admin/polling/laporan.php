@@ -5,7 +5,7 @@
 				<div class="module">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Laporan Polling</strong></a>
+							<span class="glyphicon glyphicon-inbox"/></span> &nbsp <strong>Laporan Penilaian</strong></a>
 						</h4>
 				    </div>
 				    <div class="well well-sm">
