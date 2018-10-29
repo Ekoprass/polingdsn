@@ -25,28 +25,26 @@
 						</tr>
 				</table>
 		</div>
-		<div class="col-md-2">
-			
-		</div>
-		<!-- <div class="col-md-6">	
+
+		<div class="col-md-8">	
 				<table class="table table-hover table-responsive table-bordered">
 						<tr>
-							<th colspan=3><center>Kriteria Nilai</center></th>
+							<th colspan=6><center>Kriteria Nilai</center></th>
 						</tr>
 						<tr>
-							<th width=100>Nilai</th>
-							<th width=100>Kategori</th>						
-							<th width=100>Keterangan</th>
+							<th width=125>Nilai Poin</th>
+							<?php $n=0; foreach($nilai as $row): $n++; ?>
+								<td><center><?php echo $row->kriteria_nilai;?></center></td>
+							<?php endforeach; ?>
 						</tr>
-						<?php $n=0; foreach($nilai as $row): $n++; ?>
 						<tr>
-							<td ><?php echo $row->kriteria_nilai;?></td>
-							<td ><?php echo $row->kategori;?></td>
-							<td ><?php echo $row->keterangan;?></td>							
+							<th width=125>Kriteria Nilai</th>
+							<?php $n=0; foreach($nilai as $row): $n++; ?>
+								<td><center><?php echo $row->keterangan;?></center></td>
+							<?php endforeach; ?>
 						</tr>
-						<?php endforeach;?>
 				</table>
-		</div> -->
+		</div>
 		<div class="col-md-12">
 			<div class="panel panel-default">
 					<!--panel header-->
@@ -96,7 +94,7 @@
 						<div class="well well-sm">
 							<div class="form-group">
 									<div class="col-sm-offset-0 col-sm-5">
-										<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Input Nilai</button>
+										<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Simpan Nilai</button>
 									</div>
 							</div>
 							</br>

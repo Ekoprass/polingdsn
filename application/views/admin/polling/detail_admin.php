@@ -25,7 +25,7 @@
 							<th width=125>Nama Dosen</th>
 							<td><?php echo $dosen['nama_dosen'];?></td>
 						</tr>
-						<tr>
+						<tr> 
 							<th width=125>Mata Kuliah</th>
 							<td><?php echo $dosen_mk['nama_mk'];?></td>
 						</tr>
@@ -34,11 +34,11 @@
 		<div class="col-md-4">	
 				<table class="table table-hover table-responsive table-bordered">
 						<tr>
-							<th colspan=2><center>Kelas</center></th>
+							<th colspan=2><center>Tahun Ajaran <?php echo substr($this->uri->segment(4),0,4) ?></center></th>
 						</tr>
 						<tr>
 							<th width=140>Jumlah Mahasiswa</th>
-							<td><?php echo $jumlah_mhs['jumlah_siswa'];?></td>
+							<td><?php echo $jumlah_mhs['jumlah'];?></td>
 						</tr>
 						<tr>
 							<th width=140>Sudah Menilai</th>
@@ -57,8 +57,10 @@
 					<div class="card-body">
 						<i class="icon fa fa-check fa-4x"></i>
 						<div class="content">
-							<div class="title"><b><?php echo $tot_nilai['nilai'] ?> / Rank <?php echo $rank['rank'] ?></b></div>
-							<div class="sub-title"><H5><b>Total Nilai</b></H5></div>
+							<div class="title"><h1><b>Rata-rata  <?php 
+								$rata=$tot_nilai['nilai']/$mhs_sudah_menilai['jumlah_penilai'];
+							echo $rata; ?> / Rank <?php echo $rank['rank'] ?></b></h1></div>
+							<div class="sub-title"><H3><b>Total Nilai  <?php echo $tot_nilai['nilai'] ?></b></H3></div>
 						</div>
 					<div class="clear-both"></div>
 					</div>
