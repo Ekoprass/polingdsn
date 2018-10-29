@@ -1,8 +1,9 @@
-    <?php
-		foreach ($datanilai as $key) {
-			$dosen[] = $key->nama_dosen;
-			$nilai[] = $key->nilai;
-		}
+
+   <?php
+		// foreach ($datanilai as $key) {
+		// 	$dosen[] = $key->nama_dosen;
+		// 	$nilai[] = $key->nilai;
+		// }
 	?>
 	<style>
 		canvas {
@@ -16,8 +17,37 @@
 			}		
 	</style>
 
+<div class="panel panel-info side-body">
 
-  <div id="chartdiv" class="hidden"></div> 
+<form action="<?php echo site_url('laporan/detail_report');?>" method="post" >
+  <div id="select" class="col-lg-6 col-md-6 col-sm-6">    
+    <label>Pilih Matakuliah</label>
+    <select name="matakuliah" id="input" class="form-control" required="true">
+      <option value="" selected="true"></option>
+      <?php foreach ($daftar_mk as $key) {?>
+      <option value="<?php echo $key->id_mk ?>"><?php echo $key->id_mk." - ".$key->nama_mk ?></option>
+    <?php } ?>
+    </select>
+  </div>
+  <div id="select" class="col-lg-6 col-md-6 col-sm-6">    
+    <label>Pilih Tahun Ajaran</label>
+    <select name="tahun" id="input" class="form-control" required="true">
+      <option value="" selected="true"></option>
+    <?php foreach ($tahun as $key) {?>
+      <option value="<?php echo $key->tahun ?>"><?php echo $key->tahun ?></option>
+    <?php } ?>
+    </select>
+    <button type="submit">cari</button>
+  </div>
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div id="chartdiv"></div> 
+        
+ </div>
 
 
 <script>
@@ -62,7 +92,3 @@ var chart = AmCharts.makeChart( "chartdiv", {
 
 
 <script>
-function myFunction() {
-    document.getElementById("chartdiv").className = "unhidden";
-}
-</script>

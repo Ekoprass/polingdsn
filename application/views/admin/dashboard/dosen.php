@@ -8,8 +8,8 @@
 	
 	        	<div class="panel-body">         
 					<div class="padding-top">
+						<div class="row">	
 						<?php foreach ($dosen as $row): ?>
-						<div class="row">	    
 						<div class="col-sm-3">
 			                <div class="panel fresh-color panel-danger">
 				             	<div class="panel-heading"><i class="icon fa fa-th-large fa-2x"> Detail Kelas</i>

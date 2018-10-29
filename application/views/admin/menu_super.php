@@ -110,6 +110,11 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<span class="glyphicon glyphicon-list"></span>Laporan Penilaian Dosen</a>
 												</li>
+												<li>
+													<a href="<?php echo base_url('index.php/laporan/detail_report');?>">
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span class="glyphicon glyphicon-list"></span>Laporan Grafik</a>
+												</li>
 											
 											</ul>
 										</div>

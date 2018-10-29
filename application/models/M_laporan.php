@@ -79,9 +79,9 @@ class M_laporan extends CI_Model{
         return $q;
     }
 
-    function getNilaiMk($id_mk)
+    function getNilaiMk($id_mk, $tahun)
     {
-        $q=$this->db->query("select * from polingdsn where id_mk='".$id_mk."'");
+        $q=$this->db->query("select distinct id_dosen, nama_dosen, id_mk, nama_mk, nilai from polingdsn where id_mk='$id_mk' and substr(id_kelas,1,4)='$tahun'");
          if($q->num_rows() > 0){
             foreach($q->result() as $data){
                 $hasil[] = $data;
@@ -154,5 +154,24 @@ class M_laporan extends CI_Model{
         $q=$this->db->query("select * from rank where id_dosen=$id_dosen and tahun=$id_kelas");
         return $q;
 
+    }
+
+    function rata_rata($id_dosen, $id_kelas)
+    { 
+        $q=$this->db->query("
+           select (( select distinct nilai from polingdsn where id_dosen=$id_dosen and substr(id_kelas,1,4)=substr($id_kelas,1,4))/(select distinct (count(nim)/10) as bagi from polling where id_dosen=$id_dosen and substr(id_polling,1,4)=substr($id_kelas,1,4))) as rata_rata");
+        return $q;
+    }
+    function matkul()
+    {
+         $q=$this->db->query("
+            select distinct id_mk, nama_mk from dosen_mk order by nama_mk");
+         return $q;
+    }
+    function tahun()
+    {
+        $q=$this->db->query("
+       select distinct substr(id_kelas,1,4)as tahun from kelas");
+        return $q;
     }
 }

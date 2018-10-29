@@ -85,12 +85,6 @@ class Polling extends CI_Controller{
 		$data['dosen_kelas']=$this->m_polling->dosen_polling()->result();
 		$data['dosen']=$this->m_polling->daftar_dosen()->result();
 		$data['thn_semester']=$this->m_polling->tahun_polling()->result();
-		$id_mk='7';
-		$chart['datanilai']=$this->m_laporan->getNilaiMk($id_mk);
-
-		$chart['matkul']=$this->m_laporan->Mk($id_mk)->row_array();
-
-		$data['chart'] = $this->load->view('admin/laporan/detail_report', $chart, TRUE);
 
 		$this->load->view('admin/template',$data);
     }
@@ -146,6 +140,7 @@ class Polling extends CI_Controller{
 		$data['pertanyaan']=$this->m_polling->soal($id_tahun_semester)->result();
 		$data['dosen_mk']=$this->m_laporan->dosen_mk($id)->row_array();
 
+		$data['rata_rata']=$this->m_laporan->rata_rata($id,$kelas)->result();
 		$jumlah_mhs_penilai=$this->m_laporan->mhs_menilai_dosen_thn($id, $kelas)->row_array();
 		$jumlah_mhs=$this->m_dosen->jumlah_mhs_tahun($kelas, $id)->row_array(); 
 		$data['jumlah_mhs']=$jumlah_mhs;
@@ -297,6 +292,8 @@ class Polling extends CI_Controller{
 				$data['polling']=$cek->result();
 				$data['ketemu']='<b>'.$hasil.' </b>data berhasil ditemukan ';
 				$data['jumlah']=$hasil;
+				$data['tahun_semester']=$thn_semester;
+
 				$this->load->view('admin/template',$data);
 			}else{
 				$this->session->set_flashdata('m_eror','Pencarian data tidak ditemukan!');

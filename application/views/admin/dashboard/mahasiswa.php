@@ -8,8 +8,8 @@
 <!-- BODY -->
    <div class="panel-body">         
 		<div class="padding-top">
-			<?php foreach($polling as $row):?>
-			<div class="row">	    
+			<div class="row">	  
+			<?php foreach($polling as $row):?>  
 				<div class="col-sm-3">
 	                <div class="panel fresh-color panel-danger">
 		             	<div class="panel-heading"><i class="icon fa fa-th-large fa-2x"> Detail Kelas</i>
@@ -44,15 +44,13 @@
                 		</div>
 	            	</div>		            
          		</div>
+        		<?php endforeach; ?>
+
          		<!-- <div class="col-sm-3">
 				<div class="col-sm-3"> -->
 	            <!-- </div> -->   
 	            <!-- dosen -->  
-	        
-         	
-
-
-
+	        <?php foreach($polling as $row):?>
 			<div id="<?php echo $id=$row->id_kelas;?>" class="modal fade" role="dialog">
 			  <div class="modal-dialog">
 
@@ -93,3 +91,4 @@
 		</div>
 	</div>
 	</div>	
+</div>

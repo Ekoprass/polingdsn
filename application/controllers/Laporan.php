@@ -17,21 +17,27 @@ class laporan extends CI_Controller{
 		$data['title']="Laporan | Polling AKN Bojonegoro";
 		$data['judul']="TRANSAKSI > Laporan";
 		$data['content']="laporan/index.php";
+		$username=$this->session->userdata('username');
 		$data['laporan']=$this->m_laporan->ambil_data()->result();
 		$this->load->view('admin/template',$data);
     }
 	
-	function detail_report()
+	function detail_report($id_mk=null,$tahun=null)
 	{
 		include('menu_akses.php'); //hak akses
 
 		$data['title']="Polling | Polling AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > Detail Report";
-		$id_mk='7';
+		$data['judul']="TRANSAKSI > Laporan Grafik";
+		// $id_mk=7;
+		// $tahun=2018;
+		$id_mk=$this->input->post('matakuliah');
+		$tahun=$this->input->post('tahun');
 		$data['content']="laporan/detail_report.php";
-		$data['datanilai']=$this->m_laporan->getNilaiMk($id_mk);
+		$data['datanilai']=$this->m_laporan->getNilaiMk($id_mk, $tahun);
 		$data['matkul']=$this->m_laporan->Mk($id_mk)->row_array();
-       	$this->load->view('admin/laporan/detail_report',$data,false);
+		$data['daftar_mk']=$this->m_laporan->matkul()->result();
+		$data['tahun']=$this->m_laporan->tahun()->result();
+		$this->load->view('admin/template',$data);
 
 	}
 

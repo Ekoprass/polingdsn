@@ -1,20 +1,6 @@
 
-
-
 <div class="panel panel-info side-body">
 	<!--panel header-->
-	<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Laporan Penilaian</a></li>
-    <li><a data-toggle="tab" href="#menu1" onclick="myFunction()">Grafik Laporan Bedasarkan Matakuliah</a></li>
-  <!--   <li><a data-toggle="tab" href="#menu2">Pendapatan Gedung </a></li>
-    <li><a data-toggle="tab" href="#menu3">Pendapatan Seluruh Gedung</a></li> -->
-    
-  </ul>
-
-
-
-	<div class="tab-content">
-		<div id="home" class="tab-pane fade in active">
 			<div class="content">
 				<div class="module">
 					<div class="panel-heading">
@@ -82,15 +68,4 @@
 			</div>
 		</div>
 
-
-		 <div id="menu1" class="tab-pane fade in active">
-			<div class="content">
-				<div class="module">
-					<?=$chart?>
-				</div>
-			</div>
-		</div>
 	</div>
-
-
-
