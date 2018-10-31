@@ -57,18 +57,16 @@
 					<div class="card-body">
 						<i class="icon fa fa-check fa-4x"></i>
 						<div class="content">
-							<div class="title"><h1><b>Rata-rata  <?php 
+							<div class="title"><h3><b>Rata-rata  <?php 
 								$rata=$tot_nilai['nilai']/$mhs_sudah_menilai['jumlah_penilai'];
-							echo $rata; ?> / Rank <?php echo $rank['rank'] ?></b></h1></div>
-							<div class="sub-title"><H3><b>Total Nilai  <?php echo $tot_nilai['nilai'] ?></b></H3></div>
+							echo $rata;?><br> Rank <?php echo $rank['rank'] ?></b><br>
+							<h4>Total Nilai  <?php echo $tot_nilai['nilai']?></h4></H3>
 						</div>
+					</div>
 					<div class="clear-both"></div>
 					</div>
 				</div>
 			</a>
-		</div>
-		<div class="col-md-2">
-			
 		</div>
 		<!-- <div class="col-md-6">	
 				<table class="table table-hover table-responsive table-bordered">

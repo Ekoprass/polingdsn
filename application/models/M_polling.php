@@ -175,15 +175,13 @@ class M_polling extends CI_Model{
     }
 	function cari($thn_semester){
         $q=$this->db->query("
-                            select distinct dosen.id_dosen,dosen.nama_dosen from dosen,polling where dosen.id_dosen=polling.id_dosen
-                            and left(polling.id_kelas,6)='$thn_semester'
+                            select distinct * from rank where tahun=$thn_semester
                             ");
         return $q;
     }
     function cari_dosen($thn_semester,$dosen){
         $q=$this->db->query("
-							select distinct dosen.id_dosen,dosen.nama_dosen from dosen,polling where dosen.id_dosen=polling.id_dosen
-                            and left(polling.id_kelas,6)='$thn_semester' and polling.id_dosen='$dosen'
+							 select distinct * from rank where tahun=$thn_semester and id_dosen=$dosen
 							");
         return $q;
     }

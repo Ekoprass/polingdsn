@@ -152,7 +152,6 @@ class Polling extends CI_Controller{
 		$data['rank']=$this->m_laporan->rankThn($id, $kelas)->row_array();
 
 
-
 		$this->load->view('admin/template',$data);
     }
     function detail_hasil_dosen(){
