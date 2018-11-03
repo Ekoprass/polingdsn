@@ -19,6 +19,44 @@ class Jamke extends CI_Controller{
 		$data['jamke']=$this->m_jamke->ambil_data()->result();
 		$this->load->view('admin/template',$data);
     }
+
+    function nonaktif($offset=0,$order_column='id_jam_ke',$order_type='asc'){
+        if(empty($offset)) $offset=0;
+        if(empty($order_column)) $order_column='id_jam_ke';
+        if(empty($order_type)) $order_type='asc';
+		include('menu_akses.php'); //hak akses
+		$data['title']="Jamke | Polling AKN Bojonegoro";
+		$data['judul']="MASTER DATA > Jamke Nonaktif";
+		$data['content']="jamke/nonaktif.php";
+		$data['jamke']=$this->m_jamke->ambil_non($this->limit,$offset,$order_column,$order_type)->result();
+		//pengalamatan
+		$config['base_url']		=site_url('jamke/nonaktif/');
+        $config['total_rows']	=$this->m_jamke->ambil_non();
+        $config['per_page']		=$this->limit;
+        $config['uri_segment']	=3;
+		
+		//style untuk pengalamatan dengan bootstrap
+		$config['full_tag_open'] = "<ul class='pagination pagination-sm' style='position:relative; top:-25px;'>";
+		$config['full_tag_close'] ="</ul>";
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] = "<li>";
+		$config['next_tagl_close'] = "</li>";
+		$config['prev_tag_open'] = "<li>";
+		$config['prev_tagl_close'] = "</li>";
+		$config['first_tag_open'] = "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] = "<li>";
+		$config['last_tagl_close'] = "</li>";	
+		
+		//parser
+        $this->pagination->initialize($config);
+        $data['pagination']=$this->pagination->create_links();		
+		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$this->load->view('admin/template',$data);
+    }
 	
 	function edit($id_jam_ke){
 		include('menu_akses.php'); //hak akses
