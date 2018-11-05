@@ -114,7 +114,7 @@ class M_laporan extends CI_Model{
 
     function toptri()
     {
-         $q=$this->db->query("select * from rank order by nilai desc limit 3");
+         $q=$this->db->query("select distinct * from rank order by nilai desc limit 3");
          return $q;
     }
 
