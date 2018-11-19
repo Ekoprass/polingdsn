@@ -45,8 +45,8 @@
 					<th >No</th>
 					<th >Kelas Semester</th>
 					<th >Jumlah Dosen</th>
-					<th >Sudah Melakukan Penilaian</th>
-					<th >Belum Melakukan Penilaian</th>
+					<th >Dosen Sudah dinilai</th>
+					<th >Dosen Belum dinilai</th>
 					<th ><center>Aksi</center></th>
 				</tr>
 			 <?php $no=0; foreach($polling as $row): $no++;?>

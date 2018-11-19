@@ -35,7 +35,7 @@ class M_polling extends CI_Model{
     function dosen_sudah($id,$nim){
          $q=$this->db->query(" select distinct polling.id_dosen from dosen,detail_jadwal,jadwal,polling
                             where dosen.id_dosen=detail_jadwal.id_dosen and detail_jadwal.id_jadwal=jadwal.id_jadwal
-                            and dosen.id_dosen=polling.id_dosen and polling.nim='$nim' ");
+                            and dosen.id_dosen=polling.id_dosen and polling.nim=$nim and polling.id_kelas='".$id."'");
         return $q;
     }
 	function dosen_kelas($id){
