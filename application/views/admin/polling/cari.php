@@ -49,20 +49,24 @@
 					<th >No</th>
 					<th >ID Dosen</th>
 					<th >Nama</th>
-					<th >Nilai</th>
+					<th >Nilai Rata-rata</th>
+					<th >Total Poin Nilai</th>
 					<th >Kategori</th>
 					<th ><center>Opsi</center></th>
 				</tr>
 				<?php $no=0;  foreach($polling as $row ): $no++;?>			
 				<tr>
+					<?php $jumlah_mhs_penilai=$this->m_laporan->mhs_menilai_dosen_thn($row->id_dosen, $tahun_semester)->result(); 
+					foreach ($jumlah_mhs_penilai as $key) {
+						$rata=$row->nilai/$key->jumlah_penilai;?>
+
+					
 				<td ><?php echo $no;?></td>
 				<td ><?php echo $row->id_dosen;?></td>
 				<td ><?php echo $row->nama_dosen?></td>
-				<td ><?php echo $row->nilai;?>
-				</td>
-				<td ><?php echo get_kategori($row->nilai);?>
-					
-				</td>
+				<td ><?php echo $row->nilai?></td>
+				<td ><?php echo $rata;?></td>
+				<td ><?php echo get_kategori($rata);?></td>
 				<td width=150 align = "center">
 					<a href="<?php echo  site_url('polling/detail_admin/'.$row->id_dosen.'/'.$tahun_semester);?>"
 						class='tooltipsku' 
@@ -75,6 +79,7 @@
 						</button>
 					</a>
 				</td>
+			<?php }	?>
 			</tr>
 		<?php endforeach;?>
 		</table>

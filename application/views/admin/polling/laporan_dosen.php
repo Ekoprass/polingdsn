@@ -58,32 +58,14 @@
 					<?php $no=0; foreach ($tahun_semester as $row): $no++ ;?>
 				<tr>
 					<td ><?php echo $no?></td>
-					<td ><?php echo "Tahun Ajaran ".substr($row->id_tahun_semester,0,4)." Semester ".substr($row->id_tahun_semester,4,2);?></td>
-					<td ><?php 
-				$ceknilai=$this->m_polling->ceknilai_dosen($row->id_dosen)->result();
-				$nil=array();
-				$n=0;  foreach($ceknilai as $rows ): $n++;
-				$id_kriteria_nilai=$rows->kriteria_nilai;
-				$jumlah_nilai=$this->m_polling->jumlah_nilai($id_kriteria_nilai)->row_array();
-				$nil[]=$jumlah_nilai['kriteria_nilai'];
-				//echo $jumlah_nilai['kriteria_nilai'];
-				endforeach;
-				$jumlah=array_sum($nil);
-				$ceknilai2=$this->m_polling->ceknilai2_dosen($row->id_dosen)->result();
-				$nil2=array();
-				$n=0;  foreach($ceknilai2 as $rows2 ): $n++;
-				$id_kriteria_nilai2=$rows2->kriteria_nilai;
-				$jumlah_nilai2=$this->m_polling->jumlah_nilai($id_kriteria_nilai2)->row_array();
-				$nil2[]=$jumlah_nilai2['kriteria_nilai'];
-				//echo $jumlah_nilai['kriteria_nilai'];	
-				endforeach;
-				$jumlah=array_sum($nil);
-				$jumlah2=array_sum($nil2);
-				echo $jumlah-$jumlah2; ?></td>
-				<td ><?php $kategori=$jumlah-$jumlah2;
-				echo get_kategori($kategori);?></td>
-				<td width=150 align = "center">
-					<a href="<?php echo  site_url('polling/detail_hasil_dosen/'.$row->id_dosen.'/'.$row->id_tahun_semester);?>"
+					<?php $jumlah_mhs_penilai=$this->m_laporan->mhs_menilai_dosen_thn($row->id_dosen, $row->tahun)->result(); 
+					foreach ($jumlah_mhs_penilai as $key) {
+						$rata=$row->nilai/$key->jumlah_penilai;?>
+					<td ><?php echo "Tahun Ajaran ".substr($row->tahun,0,4)." Semester ".substr($row->tahun,4,2);?></td>
+					<td ><?php echo $rata?></td>
+					<td ><?php echo get_kategori($rata);?></td>
+					<td width=150 align = "center">
+					<a href="<?php echo  site_url('polling/detail_hasil_dosen/'.$row->id_dosen.'/'.$row->tahun);?>"
 						class='tooltipsku' 
 						data-toggle='tooltip' 
 						data-placement='top' 
@@ -94,6 +76,7 @@
 						</button>
 					</a>
 				</td>
+			<?php } ?>
 				</tr>
 			<?php endforeach; ?>
 		</table>

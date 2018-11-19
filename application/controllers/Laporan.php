@@ -28,10 +28,9 @@ class laporan extends CI_Controller{
 
 		$data['title']="Polling | Polling AKN Bojonegoro";
 		$data['judul']="TRANSAKSI > Laporan Grafik";
-		// $id_mk=7;
-		// $tahun=2018;
 		$id_mk=$this->input->post('matakuliah');
 		$tahun=$this->input->post('tahun');
+		$data['thn']=$this->input->post('tahun');
 		$data['content']="laporan/detail_report.php";
 		$data['datanilai']=$this->m_laporan->getNilaiMk($id_mk, $tahun);
 		$data['matkul']=$this->m_laporan->Mk($id_mk)->row_array();

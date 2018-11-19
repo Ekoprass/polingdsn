@@ -31,7 +31,7 @@
   </div>
   <div id="select" class="col-lg-6 col-md-6 col-sm-6">    
     <label>Pilih Tahun Ajaran</label>
-    <select name="tahun" id="input" class="form-control" required="true">
+    <select name="tahun" id="thn" class="form-control" required="true">
       <option value="" selected="true"></option>
     <?php foreach ($tahun as $key) {?>
       <option value="<?php echo $key->tahun ?>"><?php echo $key->tahun ?></option>
@@ -55,7 +55,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
   "type": "radar",
   "theme": "light",
   "titles": [{
-		"text": "<?php echo $matkul['nama_mk']?>", 
+		"text": "<?php echo $matkul['nama_mk']?> Tahun <?php echo $thn?>", 
 		"color": "#0a0", 
 		"size": 24, 
 		"url": "#" //custom url property to simplify the click event setup
@@ -76,7 +76,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
   } ],
   "startDuration": 2,
   "graphs": [ {
-    "balloonText": "[[value]] nilai dari mata kuliah <?php echo $matkul['nama_mk']?>",
+    "balloonText": "[[value]] nilai dari mata kuliah <?php echo $matkul['nama_mk']?> Tahun <?php echo substr($key->id_kelas,0,4)?>",
     "bullet": "round",
     "lineThickness": 2,
     "valueField": "nilai"
@@ -89,6 +89,3 @@ var chart = AmCharts.makeChart( "chartdiv", {
 
 );
 </script>
-
-
-<script>

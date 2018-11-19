@@ -97,7 +97,7 @@ class Polling extends CI_Controller{
 		$data['dosen']=$this->m_polling->dosenuser($id)->row_array();
 		$r=$this->m_polling->dosenuser($id)->row_array();
 		$id_dosen=$r['id_dosen'];
-		$data['tahun_semester']=$this->m_polling->get_tahun_semester($id_dosen)->result();
+		$data['tahun_semester']=$this->m_laporan->dsn_nilai($id_dosen)->result();
 		$this->load->view('admin/template',$data);
     }
 	function detail_nilai($id){
@@ -270,12 +270,15 @@ class Polling extends CI_Controller{
 			$cek=$this->m_polling->cari($thn_semester);
 			$hasil=$cek->num_rows();
 			if($hasil>0){
+				$dsn=$cek->result();
+
 				$data['dosen']=$this->m_polling->daftar_dosen()->result();
 				$data['thn_semester']=$this->m_polling->tahun_polling()->result();
 				$data['polling']=$cek->result();
 				$data['ketemu']='<b>'.$hasil.' </b>data berhasil ditemukan ';
 				$data['jumlah']=$hasil;
 				$data['tahun_semester']=$thn_semester;
+
 				$this->load->view('admin/template',$data);
 			}else{
 				$this->session->set_flashdata('m_error','Pencarian data tidak ditemukan!');
