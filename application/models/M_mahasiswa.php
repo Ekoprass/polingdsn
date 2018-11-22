@@ -6,7 +6,7 @@ class M_mahasiswa extends CI_Model{
     
     function ambil_data($limit,$offset,$order_column,$order_type='asc'){
         $q=$this->db->query(" select * from mahasiswa
-							where status='aktif' ORDER BY nim DESC LIMIT $limit OFFSET $offset ");
+							where status='aktif' ORDER BY nim ASC LIMIT $limit OFFSET $offset ");
         return $q;
     }
     function jumlah_mhs(){
@@ -20,7 +20,7 @@ class M_mahasiswa extends CI_Model{
     }
 	function ambil_non($limit,$offset,$order_column,$order_type='asc'){
         $q=$this->db->query(" select * from mahasiswa
-							where status='nonaktif' ORDER BY nim DESC LIMIT $limit OFFSET $offset ");
+							where status='nonaktif' ORDER BY nim ASC LIMIT $limit OFFSET $offset ");
         return $q;
     }
 	function jumlahnonaktif(){

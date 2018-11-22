@@ -94,9 +94,10 @@ var chart = AmCharts.makeChart("serial",
     	<?php foreach ($topdosen as $key) {?>
     	{
         "name": "<?php echo $key->nama_dosen ?>",
-        "points": <?php echo $key->nilai ?>,
+        "points": "<?php echo $key->rata?>",
         "color": "#<?php echo str_pad( dechex( mt_rand( 0, 255 ) ), 3, '0', STR_PAD_LEFT); ?>",
-        "bullet": "https://www.amcharts.com/lib/images/faces/A04.png"
+        "bullet": "https://www.amcharts.com/lib/images/faces/A04.png",
+        "description":"<?php echo $key->nilai?>"
     },<?php } ?> ],
     "valueAxes": [{
         "maximum": 100,
@@ -107,7 +108,7 @@ var chart = AmCharts.makeChart("serial",
     }],
     "startDuration": 1,
     "graphs": [{
-        "balloonText": "<span style='font-size:13px;'>[[category]]: <b>[[value]]</b></span>",
+        "balloonText": "<span style='font-size:13px;'>[[category]]: <br> Rata-rata <b>[[value]]</b> <br> Total Nilai <b> [[description]]</b></span>",
         "bulletOffset": 10,
         "bulletSize": 52,
         "colorField": "color",
@@ -116,7 +117,8 @@ var chart = AmCharts.makeChart("serial",
         "fillAlphas": 0.8,
         "lineAlpha": 0,
         "type": "column",
-        "valueField": "points"
+        "valueField": "points",
+        "description":"description"
     }],
     "marginTop": 0,
     "marginRight": 0,

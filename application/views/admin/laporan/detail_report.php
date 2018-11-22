@@ -64,7 +64,8 @@ var chart = AmCharts.makeChart( "chartdiv", {
   		<?php 	foreach ($datanilai as $key) {?>
   {
     "dosen": "<?php echo $key->nama_dosen ?>",
-    "nilai": "<?php echo $key->nilai ?>"
+    "nilai": "<?php echo $key->rata ?>",
+    "description":"<?php echo $key->nilai?>"
   }, <?php } ?> 
 
 
@@ -76,9 +77,10 @@ var chart = AmCharts.makeChart( "chartdiv", {
   } ],
   "startDuration": 2,
   "graphs": [ {
-    "balloonText": "[[value]] nilai dari mata kuliah <?php echo $matkul['nama_mk']?> Tahun <?php echo substr($key->id_kelas,0,4)?>",
+    "balloonText": "[[value]] nilai dari mata kuliah <?php echo $matkul['nama_mk']?> Tahun <?php echo substr($key->tahun,0,4)?>",
     "bullet": "round",
     "lineThickness": 2,
+    "description":"description",
     "valueField": "nilai"
   } ],
   "categoryField": "dosen",

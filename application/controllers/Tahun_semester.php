@@ -101,10 +101,15 @@ class Tahun_semester extends CI_Controller{
 	function tambah_pertanyaan_proses(){
 		$pertanyaan=$this->input->post('id_pertanyaan');
 		$semester=$this->input->post('id_tahun_semester');
-		$this->m_tahun_semester->tambah_soal($pertanyaan,$semester);
-		$this->session->set_flashdata('m_sukses','Pertanyaan Berhasil Ditambahkan');
+		$cek=$this->m_tahun_semester->cekid_soal($semester,$pertanyaan);
+		if ($cek->num_rows()>0) {
+			$this->session->set_flashdata('m_eror','Gagal Petanyaan Sudah Ada');
 			redirect('tahun_semester/detail/'.$semester);
-		
+		}else{
+			$this->m_tahun_semester->tambah_soal($pertanyaan,$semester);
+			$this->session->set_flashdata('m_sukses','Pertanyaan Berhasil Ditambahkan');
+			redirect('tahun_semester/detail/'.$semester);
+		}
     }
 	function edit_pertama(){
 		$id_tahun_semester=$this->input->post('id_tahun_semester'); 

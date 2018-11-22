@@ -9,7 +9,7 @@
 	<!--bawah panel / tambah dan cari-->
 	<div class="well well-sm">
 		<a href="<?php echo site_url('jamke/tambah');?>" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Tambah</a>
-			<a href="<?php echo site_url('jamke/nonaktif');?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Lihat Data Nonaktif</a>
+			<!-- <a href="<?php //echo site_url('jamke/nonaktif');?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Lihat Data Nonaktif</a> -->
 		<form class="navbar-form navbar-right" role="search" action="<?php echo site_url('jamke/cari');?>" method="post">
 			<div class="form-group">
 				<label>Cari Jam ke </label>

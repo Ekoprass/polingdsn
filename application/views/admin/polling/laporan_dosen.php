@@ -1,3 +1,4 @@
+<?php error_reporting(0) ?>
 <div class="panel panel-info side-body">
 	<!--panel header-->
 	<div class="panel-heading">
@@ -55,7 +56,8 @@
 					<th >Kategori</th>
 					<th ><center>Opsi</center></th>
 				</tr>
-					<?php $no=0; foreach ($tahun_semester as $row): $no++ ;?>
+					<?php 
+						$no=0; foreach ($tahun_semester as $row): $no++ ;?>
 				<tr>
 					<td ><?php echo $no?></td>
 					<?php $jumlah_mhs_penilai=$this->m_laporan->mhs_menilai_dosen_thn($row->id_dosen, $row->tahun)->result(); 
@@ -79,6 +81,7 @@
 			<?php } ?>
 				</tr>
 			<?php endforeach; ?>
+					
 		</table>
 		</br>
 			

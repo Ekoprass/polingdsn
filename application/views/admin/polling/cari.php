@@ -49,9 +49,10 @@
 					<th >No</th>
 					<th >ID Dosen</th>
 					<th >Nama</th>
-					<th >Nilai Rata-rata</th>
 					<th >Total Poin Nilai</th>
+					<th >Nilai Rata-rata</th>
 					<th >Kategori</th>
+					<th >Ranking</th>
 					<th ><center>Opsi</center></th>
 				</tr>
 				<?php $no=0;  foreach($polling as $row ): $no++;?>			
@@ -67,6 +68,7 @@
 				<td ><?php echo $row->nilai?></td>
 				<td ><?php echo $rata;?></td>
 				<td ><?php echo get_kategori($rata);?></td>
+				<th ><?php echo $row->rank?> dari <?php echo $dsn_rank['jum_dsn'] ?> </th>
 				<td width=150 align = "center">
 					<a href="<?php echo  site_url('polling/detail_admin/'.$row->id_dosen.'/'.$tahun_semester);?>"
 						class='tooltipsku' 

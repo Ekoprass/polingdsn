@@ -32,7 +32,7 @@ class laporan extends CI_Controller{
 		$tahun=$this->input->post('tahun');
 		$data['thn']=$this->input->post('tahun');
 		$data['content']="laporan/detail_report.php";
-		$data['datanilai']=$this->m_laporan->getNilaiMk($id_mk, $tahun);
+		$data['datanilai']=$this->m_laporan->getNilaiMk($id_mk, $tahun)->result();
 		$data['matkul']=$this->m_laporan->Mk($id_mk)->row_array();
 		$data['daftar_mk']=$this->m_laporan->matkul()->result();
 		$data['tahun']=$this->m_laporan->tahun()->result();

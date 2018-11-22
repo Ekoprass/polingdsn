@@ -38,6 +38,10 @@ class M_tahun_semester extends CI_Model{
         $query=$this->db->get($this->table);        
         return $query;
     }
+    function cekid_soal($id_tahun_semester,$id_soal){
+        $q=$this->db->query(" select * from tahun_semester_soal where id_tahun_semester='$id_tahun_semester' and id_soal='$id_soal'");
+        return $q;
+    }
 	function simpan($info){
 		$this->db->insert($this->table,$info); //samadengan perintah insert into - untuk memasukkan data ke database
 		return $this->db->get($this->table);

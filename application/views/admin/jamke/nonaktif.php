@@ -2,19 +2,19 @@
 	<!--panel header-->
 	<div class="panel-heading">
 		<h4 class="panel-title">
-			<span class="glyphicon glyphicon-user"/></span> &nbsp <a href="<?php echo site_url('mata_kuliah/nonaktif');?>"><strong>Mata Kuliah Nonaktif</strong></a>
+			<span class="glyphicon glyphicon-time"/></span> &nbsp <a href="<?php echo site_url('jamke');?>"><strong>Jam ke Aktif</strong></a>
 		</h4>
     </div>
 	
 	<!--bawah panel / tambah dan cari-->
 	<div class="well well-sm">
-			<a href="<?php echo site_url('mata_kuliah');?>" class="btn btn-success"><i class="glyphicon glyphicon-star"></i> Lihat Data Aktif</a>
-		<form class="navbar-form navbar-right" role="search" action="<?php echo site_url('mata_kuliah/cari');?>" method="post">
+		<a href="<?php echo site_url('jamke');?>" class="btn btn-success"><i class="glyphicon glyphicon-star"></i> Lihat Data Aktif</a>
+		<form class="navbar-form navbar-right" role="search" action="<?php echo site_url('jamke/cari');?>" method="post">
 			<div class="form-group">
-				<label>Cari Mata Kuliah </label>
+				<label>Cari Jam ke </label>
 				<input type="text" class="form-control" placeholder="masukkan nama" name="cari">
 			</div>
-			<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Cari</button>	
+			<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Cari</button>	
 		</form>
 	</div>
 	<div class="panel-body">		
@@ -44,55 +44,29 @@
 			<thead>
 				<tr>
 					<th >No.</th>
-					<th >Id Mata Kuliah</th>
-					<th >Nama Mata Kuliah</th>
-					<th >Deskripsi</th>
-					<th >Jumlah Jam</th>
-					<th >Jumlah SKS</th>
-					<th >Semester</th>
-					<th >Status</th>
-					<th colspan="3" align="center">Aksi</th>
+					<th >Id Jam ke</th>
+					<th >Nama</th>
+					<th >Jam Mulai</th>
+					<th >Jam Selesai</th>
+					<th ><center>Aksi</center></th>
 				</tr>
 			</thead>
-			<?php $no=0; foreach($mata_kuliah as $row): $no++;?>
+			<?php $no=0; foreach($jamke as $row): $no++;?>
 			<tr>
-				<td ><?php echo $no;?></td>
-				<td ><?php echo $row->id_mk;?></td>
-				<td ><?php echo $row->nama_mk;?></td>
-				<td ><?php echo $row->deskripsi_mk;?></td>
-				<td ><?php echo $row->jml_jam;?></td>			
-				<td ><?php echo $row->jml_sks;?></td>
-				<td ><?php echo $row->smt;?></td>
-				<td ><?php echo $row->status_mk;?></td>
+				<td ><?php echo $no+;?></td>
+				<td ><?php echo $row->id_jam_ke;?></td>
+				<td ><?php echo $row->nama;?></td>
+				<td ><?php echo $row->jam_mulai;?></td>
+				<td ><?php echo $row->jam_selesai;?></td>
 				<td width=150 align = "center">
-						<a href="<?php echo site_url('mata_kuliah/detail/'.$row->id_mk);?>"
+						<a href="<?php echo site_url('jamke/edit/'.$row->id_jam_ke);?>"
 							class='tooltipsku' 
 							data-toggle='tooltip' 
 							data-placement='top' 
-							title="<?php echo 'detail '.$row->id_mk;?>"
+							title="<?php echo 'Edit '.$row->id_jam_ke;?>"
 							>
-							<button type="button" class="btn btn-default" aria-label="Left Align">
-								<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
-							</button>
-						</a>
-						<a href="#"
-							class='tooltipsku' 
-							data-toggle='tooltip' 
-							data-placement='top' 
-							title='data nonaktif tidak boleh di edit'
-							>
-							<button type="button" class="btn btn-default" aria-label="Left Align">
+							<button type="button" class="btn btn-info" aria-label="Left Align">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-							</button>
-						</a>
-						<a disabled href="<?php echo site_url('mata_kuliah/aktifkan/'.$row->id_mk);?>"
-							class='tooltipsku' 
-							data-toggle='tooltip' 
-							data-placement='top' 
-							title="<?php echo 'Aktifkan'.$row->id_mk;?>"
-							>
-							<button type="button" class="btn btn-success" aria-label="Left Align">
-								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 							</button>
 						</a>
 				</td>

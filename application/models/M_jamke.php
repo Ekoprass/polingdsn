@@ -2,6 +2,8 @@
 class M_jamke extends CI_Model{
     private $table="jam_ke";
 	private $primary="id_jam_ke";
+    private $state="status";
+    
     
     function ambil_data(){
         $q=$this->db->query("
@@ -51,5 +53,10 @@ class M_jamke extends CI_Model{
 							select * from jam_ke where nama LIKE '%$cari%'
 							");
         return $q;
+    }
+    function jumlahnonaktif(){
+        $this->db->where($this->state, 'nonaktif');
+        $this->db->from($this->table);
+        return $this->db->count_all_results();
     }
 }

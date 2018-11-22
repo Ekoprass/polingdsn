@@ -79,8 +79,7 @@ class M_polling extends CI_Model{
         return $q;
     }
 	function soal($id){
-		 $q=$this->db->query(" select * from pertanyaan,tahun_semester_soal,tahun_semester where pertanyaan.id_pertanyaan=tahun_semester_soal.id_soal
-		and tahun_semester.id_tahun_semester=tahun_semester_soal.id_tahun_semester");
+		 $q=$this->db->query(" select * from tahun_semester_soal ths inner join pertanyaan p on p.id_pertanyaan=ths.id_soal where ths.id_tahun_semester=$id");
         return $q;
     }
 	function kelas_siswa($id){
@@ -175,7 +174,7 @@ class M_polling extends CI_Model{
     }
 	function cari($thn_semester){
         $q=$this->db->query("
-                            select distinct * from rank where tahun=$thn_semester
+                            select distinct * from rank where tahun=$thn_semester order by rank asc
                             ");
         return $q;
     }

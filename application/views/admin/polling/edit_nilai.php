@@ -68,25 +68,13 @@
 								<!--<th width=200 >Kategori</th>-->
 								<th width=100 ><center>Nilai</center></th>
 							</tr>
-						<?php $no=0; foreach($pertanyaan as $row ): $no++;?>
-							<input type="hidden" value="<?php echo $row->id_pertanyaan; ?>" name="soal[]" >
+						<?php $no=0; foreach($penilaian as $row ): $no++;?>
+							<input type="hidden" value="<?php echo $row->id_soal; ?>" name="soal[]" >
 							<tr>
 								<td><?php echo ($no);?></td>
 								<td><?php echo $row->pertanyaan;?></td>
-								<!--<td><?php echo $row->kategori;?></td>-->
-								<td><?php $nilai=$this->m_polling->kriteria($row->kategori);?>
-								<div class="col-md-12">
-									<select required name="nilai[]" >
-										<option value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-										<?php
-										foreach($nilai->result_array() as $d)
-											{
-												echo "<option value='".$d['id_kriteria_nilai']."'> ".$d['kriteria_nilai']."</option>";
-											}
-										?>
-									</select>
-								</div>
-								</td>
+								<td><center><?php echo $row->kriteria_nilai;?></center></td>
+								
 							</tr>
 						<?php endforeach;?>
 					</table>
@@ -95,11 +83,11 @@
 					<input type="hidden" value="<?php echo $this->session->userdata('username'); ?>" name="nim" >
 					<div class="col-sm-20">
 						<div class="well well-sm">
-							<div class="form-group">
+							<!-- <div class="form-group">
 									<div class="col-sm-offset-0 col-sm-5">
 										<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Edit Nilai</button>
 									</div>
-							</div>
+							</div> -->
 							</br>
 							</br>
 						</div>

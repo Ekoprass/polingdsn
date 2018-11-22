@@ -81,13 +81,9 @@ class M_laporan extends CI_Model{
 
     function getNilaiMk($id_mk, $tahun)
     {
-        $q=$this->db->query("select distinct * from polingdsn where id_mk='$id_mk' and substr(id_kelas,1,4)='$tahun'");
-         if($q->num_rows() > 0){
-            foreach($q->result() as $data){
-                $hasil[] = $data;
-            }
-            return $hasil;
-        }
+         $q=$this->db->query("select distinct * from rank where id_mk='$id_mk' and substr(tahun,1,4)='$tahun'");
+        return $q;
+
 
     }
 
@@ -179,6 +175,23 @@ class M_laporan extends CI_Model{
     {
          $q=$this->db->query("
             select distinct * from rank where id_dosen=$id_dosen");
+         return $q;
+    }
+
+    function nilai_mhs($id_dosen, $nim)
+    {
+        $q=$this->db->query("
+            select p.id_soal, pr.pertanyaan, kn.kriteria_nilai from polling p 
+            inner join kriteria_nilai kn on p.kriteria_nilai=kn.id_kriteria_nilai
+            inner join pertanyaan pr on p.id_soal=pr.id_pertanyaan
+            where nim=$nim and id_dosen=$id_dosen");
+        return $q;
+    }
+
+    function dsn_rank($tahun)
+    {
+         $q=$this->db->query("
+            select distinct count(*)as jum_dsn from rank where tahun=$tahun");
          return $q;
     }
 }

@@ -64,6 +64,7 @@ class Polling extends CI_Controller{
 		$dosen=$this->input->post('dosen');
 		$kelas=$this->input->post('kelas');
 		$nim=$this->input->post('nim');
+
 		$this->m_polling->edit_polling($dosen,$kelas,$nim);
 		$this->session->set_flashdata('m_sukses','Penilaian Berhasil Dilakukan');
 		redirect('polling/detail/'.$kelas);
@@ -176,18 +177,26 @@ class Polling extends CI_Controller{
 
 		$data['kelas']=$this->m_laporan->getKelas($id)->result();
 		$data['tot_nilai']=$this->m_laporan->rankThn($id, $kelas)->row_array();
-		$data['rank']=$this->m_laporan->rankThn($id, $kelas)->row_array();
+		$rank=$this->m_laporan->rankThn($id, $kelas);
+		if ($rank->num_rows()>0) {
+			$data['rank']=$this->m_laporan->rankThn($id, $kelas)->row_array();
+		}else{
+			$data['rank']=null;
+		}
+		
 
 
 		$this->load->view('admin/template',$data);
     }
     function edit_nilai($id){
 		include('menu_akses.php'); //hak akses
+		$username=$this->session->userdata('username');
 		$data['title']="Penilaian | Penilaian AKN Bojonegoro";
 		$data['judul']="TRANSAKSI > Penilaian";
 		$data['content']="polling/edit_nilai.php";
 		$data['dosen']=$this->m_polling->dosen($id)->row_array();
 		$data['nilai']=$this->m_polling->nilai()->result();
+		$data['penilaian']=$this->m_laporan->nilai_mhs($id, $username)->result();
 		$id_kelas=$this->uri->segment(4);
 		$id_tahun_semester=substr($id_kelas,0,6);
 		$data['pertanyaan']=$this->m_polling->soal($id_tahun_semester)->result();
@@ -259,7 +268,7 @@ class Polling extends CI_Controller{
 	function cari(){
 		include('menu_akses.php'); //hak akses
 		$data['title']=" Penilaian Cari | Penilaian AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > polling Cari";
+		$data['judul']="TRANSAKSI > Cari Penilaian Dosen";
 		$data['content']="polling/cari.php";
 		$thn_semester=$this->input->post('thn_semester');
 		$dosen=$this->input->post('dosen');		
@@ -274,6 +283,7 @@ class Polling extends CI_Controller{
 
 				$data['dosen']=$this->m_polling->daftar_dosen()->result();
 				$data['thn_semester']=$this->m_polling->tahun_polling()->result();
+				$data['dsn_rank']=$this->m_laporan->dsn_rank($thn_semester)->row_array();
 				$data['polling']=$cek->result();
 				$data['ketemu']='<b>'.$hasil.' </b>data berhasil ditemukan ';
 				$data['jumlah']=$hasil;
@@ -293,6 +303,7 @@ class Polling extends CI_Controller{
 				$data['dosen']=$this->m_polling->daftar_dosen()->result();
 				$data['thn_semester']=$this->m_polling->tahun_polling()->result();
 				$data['polling']=$cek->result();
+				$data['dsn_rank']=$this->m_laporan->dsn_rank($thn_semester)->row_array();
 				$data['ketemu']='<b>'.$hasil.' </b>data berhasil ditemukan ';
 				$data['jumlah']=$hasil;
 				$data['tahun_semester']=$thn_semester;
@@ -308,7 +319,7 @@ class Polling extends CI_Controller{
     function caridos(){
 		include('menu_akses.php'); //hak akses
 		$data['title']=" Penilaian Cari | Penilaian AKN Bojonegoro";
-		$data['judul']="TRANSAKSI > polling Cari";
+		$data['judul']="TRANSAKSI >Cari Penilaian Dosen";
 		$data['content']="polling/caridos.php";
 		$thn_semester=$this->input->post('thn_semester');
 		$dosen=$this->input->post('dosen');		
@@ -322,6 +333,7 @@ class Polling extends CI_Controller{
 				$data['dosen']=$this->m_polling->daftar_dosen()->result();
 				$data['thn_semester']=$this->m_polling->tahun_polling()->result();
 				$data['polling']=$cek->result();
+				$data['dsn_rank']=$this->m_laporan->dsn_rank($thn_semester)->row_array();
 				$data['ketemu']='<b>'.$hasil.' </b>data berhasil ditemukan ';
 				$data['jumlah']=$hasil;
 				$data['tahun_semester']=$thn_semester;
