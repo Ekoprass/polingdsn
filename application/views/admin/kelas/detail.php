@@ -36,18 +36,18 @@
 		<div class="col-md-5">
 			<?php
 				$kelas=$kelas_siswa['id_kelas'];
-				$r=substr($kelas,0,2);
-				$i=substr($kelas,2,2);
-				$k=substr($kelas,4,2);
-				$h=substr($kelas,6,4);
-				$g=$i+01;
-				$m=$k+01;
-				if($k==01){
-					$id=$r.$i.'0'.$m.$h;
-				}elseif($k==02){
-					$id=$r.$g.'0'.$m.$h;
-				}else{
-					$id=$r.$g.'0'.$m.$h;
+				$r=substr($kelas,0,2); 			//2 digit tahun depan 20
+				$i=substr($kelas,2,2); 			//2 digit tahun belakang 18
+				$k=substr($kelas,4,2); 			//2 digit semester 05
+				$h=substr($kelas,6,5); 			//4 digit kelas ti02
+				$g=$i+1; 						//digit belakang tahun +1
+				$m=$k+1; 						//digit semester +1
+
+
+				if($k % 2 == 1){ 				//jika semester ganjil
+					$id=$r.$g.'0'.$m.$h; 		//maka tahun dan semester ditambah 1
+				}elseif($k % 2 == 0){ 			//jika semester genap 
+					$id=$r.$i.'0'.$m.$h; 		// maka hanya semester diatambah 1
 				}
 				?>
 

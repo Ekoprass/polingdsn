@@ -104,7 +104,7 @@ class Kelas extends CI_Controller{
 		$tahun=substr($ini,0,4);
 		$semester=substr($ini,4,2);
 		$prodi=substr($ini,6,2);
-		$ruang=substr($ini,8,2);
+		$ruang=substr($ini,8,3);
 		$data['prodi']=$prodi;
 		$data['tahun']=$tahun;
 		$data['semester']=$semester;

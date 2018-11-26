@@ -64,7 +64,7 @@
 				<div class="panel-heading">
 					<h4 class="panel-title">
 						<span class="glyphicon glyphicon-user"></span>
-						<strong>Detail Jadwal Kelas <?php echo $kelas_j['id_kelas'];?></strong>
+						<strong>Detail Jadwal Kelas <?php echo substr($kelas_j['id_kelas'], 6,2)." - ".substr($kelas_j['id_kelas'], 8,2)." Semester ".substr($kelas_j['id_kelas'], 4,2)." Tahun ".substr($kelas_j['id_kelas'], 0,4);?></strong>
 					</h4>
 				</div>				
 					<!--body-->

@@ -9,7 +9,7 @@
 	<!--bawah panel / tambah dan cari-->
 	<div class="well well-sm">
 		<a href="<?php echo site_url('tahun_semester/tambah');?>" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Tambah</a>
-			<a href="<?php echo site_url('tahun_semester/nonaktif');?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Lihat Data Nonaktif</a>
+			<!-- <a href="<?php echo site_url('tahun_semester/nonaktif');?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Lihat Data Nonaktif</a> -->
 		<form class="navbar-form navbar-right" role="search" action="<?php echo site_url('tahun_semester/cari');?>" method="post">
 			<div class="form-group">
 				<label>Cari tahun semester </label>
@@ -82,7 +82,7 @@
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							</button>
 						</a>
-						<a disabled href="<?php echo site_url('tahun_semester/hapus/'.$row->id_tahun_semester);?>"
+					<!-- 	<a disabled href="<?php echo site_url('tahun_semester/hapus/'.$row->id_tahun_semester);?>"
 							class='tooltipsku' 
 							data-toggle='tooltip' 
 							data-placement='top' 
@@ -91,7 +91,7 @@
 							<button type="button" class="btn btn-danger" aria-label="Left Align">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</button>
-						</a>
+						</a> -->
 				</td>
 			</tr>
 			<?php endforeach; ?>
